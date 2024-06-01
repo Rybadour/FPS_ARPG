@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bakr3gertjlwr"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_bkgkj"]
+[ext_resource type="Texture2D" uid="uid://dvxscx5vqv6p0" path="res://kenney_blocky-characters/Faces/face_robot.png" id="1_ocwvo"]
+[ext_resource type="PackedScene" uid="uid://di4l55guqiy8p" path="res://kenney_blaster-kit/Models/GLTF format/blasterB.glb" id="2_0xwil"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h0o4t"]
+radius = 0.2
+height = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5x0n"]
+albedo_texture = ExtResource("1_ocwvo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_72ff4"]
+material = SubResource("StandardMaterial3D_m5x0n")
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3h7y"]
+height = 0.771476
+radius = 0.235225
+
+[node name="Enemy" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_bkgkj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.381774, 0)
+mesh = SubResource("CapsuleMesh_h0o4t")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615216, 0.212463)
+mesh = SubResource("QuadMesh_72ff4")
+
+[node name="blasterB2" parent="." instance=ExtResource("2_0xwil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220341, 0.351752, 0.159544)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374224, 0)
+shape = SubResource("CylinderShape3D_b3h7y")
+
+[node name="Damage" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16169, 0)
+pixel_size = 0.001
+billboard = 1
+fixed_size = true
+modulate = Color(0.654902, 0, 0, 1)
+font_size = 64
+outline_size = 10
