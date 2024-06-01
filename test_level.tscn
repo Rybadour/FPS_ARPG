@@ -15,6 +15,7 @@ height = 1.00761
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.07446)
 
 [node name="block-grass-large4" parent="Environment" instance=ExtResource("1_urg4f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.531415, -4.63637, 3.77021)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14873, 0.413501)
@@ -29,4 +30,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.042294, 0)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.967938, -0.0775848, 0.238909, -0.218996, 0.726506, -0.65133, -0.123035, -0.682767, -0.720203, -3.77198, 2.68325, 1.95869)
+transform = Transform3D(0.771719, -0.288985, -0.566513, 0.604731, 0.609177, 0.513033, 0.196848, -0.738506, 0.644872, -5.6158, 2.68325, 1.95869)

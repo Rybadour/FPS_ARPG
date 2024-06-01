@@ -1,12 +1,29 @@
 extends CharacterBody3D
 
+@onready var cam = $Camera3D;
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 4.0;
+const JUMP_VELOCITY = 5
+const CAM_SENSITIVITY = 0.005;
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var lastMouse: Vector2;
+
+func _init():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
+	
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
+			
+	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		self.rotation.y -= event.relative.x * CAM_SENSITIVITY;
+		cam.rotation.x -= event.relative.y * CAM_SENSITIVITY;
 
 func _physics_process(delta):
 	# Add the gravity.
