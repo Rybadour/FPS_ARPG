@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn3fmdhwhen5x"]
+
+[ext_resource type="PackedScene" uid="uid://bggbvmwnrgqoj" path="res://block_grass_large_2.tscn" id="1_urg4f"]
+[ext_resource type="Script" path="res://PlayerController.gd" id="2_xemds"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n0tb1"]
+radius = 0.299458
+height = 1.00761
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="block-grass-large5" parent="Environment" instance=ExtResource("1_urg4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.07446)
+
+[node name="block-grass-large4" parent="Environment" instance=ExtResource("1_urg4f")]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14873, 0.413501)
+axis_lock_angular_y = true
+script = ExtResource("2_xemds")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_n0tb1")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.042294, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.967938, -0.0775848, 0.238909, -0.218996, 0.726506, -0.65133, -0.123035, -0.682767, -0.720203, -3.77198, 2.68325, 1.95869)
