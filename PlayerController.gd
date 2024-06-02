@@ -1,5 +1,9 @@
 extends CharacterBody3D
+class_name PlayerController
 
+var spineScene = preload("res://spine_projectile.tscn");
+
+@onready var projectiles: Node3D = get_node('../PlayerProjectiles');
 @onready var cam = $Camera3D;
 
 const SPEED = 4.0;
@@ -50,12 +54,17 @@ func _physics_process(delta):
 	# Shooting
 	if Input.is_action_just_pressed("game_shoot"):
 		var mouse = get_viewport().get_mouse_position();
-		var origin = cam.project_ray_origin(mouse);
-		var query = PhysicsRayQueryParameters3D.create(origin, origin + cam.project_ray_normal(mouse) * 1000);
-		query.collision_mask = 0b00000000_00000000_00000000_0000100;
-		query.collide_with_bodies = true;
-		var enemy = get_world_3d().direct_space_state.intersect_ray(query);
-		if !enemy.is_empty():
-			var obj = enemy.get('collider');
-			if obj is Enemy:
-				obj.onHit(1);
+		var newSpine = spineScene.instantiate() as RigidBody3D;
+		newSpine.global_position = cam.project_ray_origin(mouse);
+		newSpine.set_axis_velocity(cam.project_ray_normal(mouse) * 10);
+		projectiles.add_child(newSpine);
+		
+		#var origin = cam.project_ray_origin(mouse);
+		#var query = PhysicsRayQueryParameters3D.create(origin, origin + cam.project_ray_normal(mouse) * 1000);
+		#query.collision_mask = 0b00000000_00000000_00000000_0000100;
+		#query.collide_with_bodies = true;
+		#var enemy = get_world_3d().direct_space_state.intersect_ray(query);
+		#if !enemy.is_empty():
+			#var obj = enemy.get('collider');
+			#if obj is Enemy:
+				#obj.onHit(1);

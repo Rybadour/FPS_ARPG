@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://PlayerController.gd" id="2_xemds"]
 [ext_resource type="PackedScene" uid="uid://jq8u5g3sh7rb" path="res://assets/kenney_platformer-kit/Models/GLB format/barrel.glb" id="2_ygk2l"]
 [ext_resource type="PackedScene" uid="uid://ccgn1hl3vmm8u" path="res://assets/kenney_platformer-kit/Models/GLB format/block-grass-corner-low.glb" id="3_0dnw8"]
-[ext_resource type="PackedScene" uid="uid://bakr3gertjlwr" path="res://enemy.tscn" id="3_k54i6"]
+[ext_resource type="PackedScene" uid="uid://bakr3gertjlwr" path="res://shooty_boi.tscn" id="3_k54i6"]
 [ext_resource type="PackedScene" uid="uid://dqhaksup3xp56" path="res://assets/kenney_platformer-kit/Models/GLB format/bomb.glb" id="4_o1mmh"]
 [ext_resource type="PackedScene" uid="uid://bbm3xxne0i1n2" path="res://hopper_enemy.tscn" id="4_tcm5b"]
 [ext_resource type="PackedScene" uid="uid://ceojmexe2v8ot" path="res://assets/kenney_platformer-kit/Models/GLB format/chest.glb" id="5_w4ev0"]
@@ -91,3 +91,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03492, 0.853798, 0)
 
 [node name="HopperEnemy2" parent="Enemies" instance=ExtResource("4_tcm5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86523, 0)
+
+[node name="PlayerProjectiles" type="Node3D" parent="."]

@@ -20,7 +20,7 @@ size = Vector2(0.4, 0.4)
 height = 0.771476
 radius = 0.235225
 
-[node name="Enemy" type="RigidBody3D"]
+[node name="ShootyBoi" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_bkgkj")
 
@@ -40,3 +40,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374224, 0)
 shape = SubResource("CylinderShape3D_b3h7y")
 
 [node name="EnemyOnHitEffects" parent="." instance=ExtResource("4_86c03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754206, 0)

@@ -7,7 +7,7 @@
 script = ExtResource("1_whwpx")
 
 [node name="Damage" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16169, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 pixel_size = 0.001
 billboard = 1
 fixed_size = true
