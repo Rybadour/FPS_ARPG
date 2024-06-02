@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://7qbr6j7h3fpk"]
+
+[ext_resource type="Script" path="res://EnemyOnHitEffects.gd" id="1_whwpx"]
+[ext_resource type="AudioStream" uid="uid://glf0rtnys34" path="res://assets/impactPlank_medium_000.ogg" id="2_aqagp"]
+
+[node name="EnemyOnHitEffects" type="Node3D"]
+script = ExtResource("1_whwpx")
+
+[node name="Damage" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16169, 0)
+pixel_size = 0.001
+billboard = 1
+fixed_size = true
+modulate = Color(0.654902, 0, 0, 1)
+font_size = 64
+outline_size = 10
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aqagp")
+volume_db = -5.622

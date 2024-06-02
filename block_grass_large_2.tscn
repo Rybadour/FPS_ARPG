@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bggbvmwnrgqoj"]
 
-[ext_resource type="PackedScene" uid="uid://1ap3ibq2u26r" path="res://kenney_platformer-kit/Models/GLB format/block-grass-large.glb" id="1_nxxl3"]
+[ext_resource type="PackedScene" uid="uid://1ap3ibq2u26r" path="res://assets/kenney_platformer-kit/Models/GLB format/block-grass-large.glb" id="1_nxxl3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5u055"]
 

@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bakr3gertjlwr"]
+[gd_scene load_steps=9 format=3 uid="uid://bakr3gertjlwr"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_bkgkj"]
-[ext_resource type="Texture2D" uid="uid://dvxscx5vqv6p0" path="res://kenney_blocky-characters/Faces/face_robot.png" id="1_ocwvo"]
-[ext_resource type="PackedScene" uid="uid://di4l55guqiy8p" path="res://kenney_blaster-kit/Models/GLTF format/blasterB.glb" id="2_0xwil"]
+[ext_resource type="Texture2D" uid="uid://dvxscx5vqv6p0" path="res://assets/kenney_blocky-characters/Faces/face_robot.png" id="2_12fbo"]
+[ext_resource type="PackedScene" uid="uid://di4l55guqiy8p" path="res://assets/kenney_blaster-kit/Models/GLTF format/blasterB.glb" id="3_b17kj"]
+[ext_resource type="PackedScene" uid="uid://7qbr6j7h3fpk" path="res://enemy_on_hit_effects.tscn" id="4_86c03"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_h0o4t"]
 radius = 0.2
 height = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5x0n"]
-albedo_texture = ExtResource("1_ocwvo")
+albedo_texture = ExtResource("2_12fbo")
 
 [sub_resource type="QuadMesh" id="QuadMesh_72ff4"]
 material = SubResource("StandardMaterial3D_m5x0n")
@@ -31,18 +32,11 @@ mesh = SubResource("CapsuleMesh_h0o4t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615216, 0.212463)
 mesh = SubResource("QuadMesh_72ff4")
 
-[node name="blasterB2" parent="." instance=ExtResource("2_0xwil")]
+[node name="blasterB2" parent="." instance=ExtResource("3_b17kj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220341, 0.351752, 0.159544)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374224, 0)
 shape = SubResource("CylinderShape3D_b3h7y")
 
-[node name="Damage" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16169, 0)
-pixel_size = 0.001
-billboard = 1
-fixed_size = true
-modulate = Color(0.654902, 0, 0, 1)
-font_size = 64
-outline_size = 10
+[node name="EnemyOnHitEffects" parent="." instance=ExtResource("4_86c03")]
