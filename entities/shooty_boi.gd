@@ -31,11 +31,6 @@ func onHit(damage: int):
 		body.reparent(corpse);
 		get_parent().add_child(corpse);
 		corpseShape.disabled = false;
-		#corpse.freeze = true;
-		#(corpse.get_child(0) as CollisionShape3D).disabled = false;
-		
-		#corpse.set_deferred("freeze", false);
-		#corpse.set_deferred("collision_mask", 1);
 		corpse.apply_impulse(Vector3(0, 1, -0.3));
 		queue_free();
 
