@@ -104,6 +104,7 @@ size = Vector3(5, 0.5, 50.1358)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.999264, 0, 0.0383703, 0, 1, 0, -0.0383703, 0, 0.999264, 0, 3.14873, 35.9295)
+collision_layer = 2
 platform_on_leave = 2
 platform_floor_layers = 4294967040
 script = ExtResource("1_8otq7")
@@ -132,3 +133,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7714, 6.63663, 14.7838)
 
 [node name="ShootyBoi3" parent="Enemies" instance=ExtResource("2_gojxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43634, 6.63663, 13.6037)
+
+[node name="ShootyBoi4" parent="Enemies" instance=ExtResource("2_gojxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35884, 0.718379, 21.4681)

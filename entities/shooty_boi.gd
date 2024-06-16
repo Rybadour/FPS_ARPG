@@ -1,16 +1,14 @@
 extends CharacterBody3D
 class_name Enemy
 
-@onready var effects: EnemyOnHitEffects = $EnemyOnHitEffects;
+@onready var effects: EnemyOnHitEffects = $Body/EnemyOnHitEffects;
 @onready var navAgent: NavigationAgent3D = $NavigationAgent3D;
+@onready var body: Node3D = $Body;
+@onready var corpseShape: CollisionShape3D = $CorpseShape;
 
 const SPEED = 3;
 
 var health: int = 10;
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -27,6 +25,19 @@ func _physics_process(delta):
 func onHit(damage: int):
 	health -= damage;
 	effects.onHit(damage);
+	if health <= 0:
+		var corpse = RigidBody3D.new();
+		corpseShape.reparent(corpse);
+		body.reparent(corpse);
+		get_parent().add_child(corpse);
+		corpseShape.disabled = false;
+		#corpse.freeze = true;
+		#(corpse.get_child(0) as CollisionShape3D).disabled = false;
+		
+		#corpse.set_deferred("freeze", false);
+		#corpse.set_deferred("collision_mask", 1);
+		corpse.apply_impulse(Vector3(0, 1, -0.3));
+		queue_free();
 
 func updateTarget(target: Vector3):
 	navAgent.target_position = target;
