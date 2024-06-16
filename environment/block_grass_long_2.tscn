@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7udha20v7lhh"]
+
+[ext_resource type="PackedScene" uid="uid://cxp5xbhq2wy2t" path="res://assets/kenney_platformer-kit/Models/GLB format/block-grass-long.glb" id="1_jfwu1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prra1"]
+size = Vector3(2.08212, 1.00001, 1.08212)
+
+[node name="block-grass-long2" instance=ExtResource("1_jfwu1")]
+
+[node name="@StaticBody3D@65590" type="StaticBody3D" parent="block-grass-long" index="0"]
+
+[node name="@CollisionShape3D@65591" type="CollisionShape3D" parent="block-grass-long/@StaticBody3D@65590" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500005, 0)
+shape = SubResource("BoxShape3D_prra1")

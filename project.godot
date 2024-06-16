@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Fps Arpg"
-run/main_scene="res://test_level.tscn"
+run/main_scene="res://levels/test_level_2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/aabb-static-box-collider-from-mesh/plugin.cfg")
 
 [input]
 

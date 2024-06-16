@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://8rlegwo06x23"]
 
-[ext_resource type="PackedScene" uid="uid://btahkv08m8qny" path="res://assets/kenny_foodkit/carrot.glb" id="1_e776v"]
+[ext_resource type="PackedScene" uid="uid://btahkv08m8qny" path="res://assets/kenny_foodkit/carrot.glb" id="1_44aj8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ep35j"]
 radius = 0.0563815
@@ -13,5 +13,5 @@ continuous_cd = true
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.109351, 0, 0)
 shape = SubResource("CapsuleShape3D_ep35j")
 
-[node name="carrot2" parent="." instance=ExtResource("1_e776v")]
+[node name="carrot2" parent="." instance=ExtResource("1_44aj8")]
 transform = Transform3D(-0.00822037, -0.999966, 0, 0.999966, -0.00822037, 0, 0, 0, 1, 0.317324, 0, 0)

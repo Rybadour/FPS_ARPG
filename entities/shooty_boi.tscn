@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bakr3gertjlwr"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_bkgkj"]
+[ext_resource type="Script" path="res://entities/shooty_boi.gd" id="1_kdgu3"]
 [ext_resource type="Texture2D" uid="uid://dvxscx5vqv6p0" path="res://assets/kenney_blocky-characters/Faces/face_robot.png" id="2_12fbo"]
 [ext_resource type="PackedScene" uid="uid://di4l55guqiy8p" path="res://assets/kenney_blaster-kit/Models/GLTF format/blasterB.glb" id="3_b17kj"]
-[ext_resource type="PackedScene" uid="uid://7qbr6j7h3fpk" path="res://enemy_on_hit_effects.tscn" id="4_86c03"]
+[ext_resource type="PackedScene" uid="uid://7qbr6j7h3fpk" path="res://entities/enemy_on_hit_effects.tscn" id="4_86c03"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_h0o4t"]
 radius = 0.2
@@ -20,17 +20,18 @@ size = Vector2(0.4, 0.4)
 height = 0.771476
 radius = 0.235225
 
-[node name="ShootyBoi" type="RigidBody3D"]
-collision_layer = 4
-script = ExtResource("1_bkgkj")
+[node name="ShootyBoi" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_kdgu3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.381774, 0)
 mesh = SubResource("CapsuleMesh_h0o4t")
+skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615216, 0.212463)
 mesh = SubResource("QuadMesh_72ff4")
+skeleton = NodePath("../..")
 
 [node name="blasterB2" parent="." instance=ExtResource("3_b17kj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220341, 0.351752, 0.159544)
@@ -41,3 +42,7 @@ shape = SubResource("CylinderShape3D_b3h7y")
 
 [node name="EnemyOnHitEffects" parent="." instance=ExtResource("4_86c03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754206, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 3.0
+path_height_offset = 0.5

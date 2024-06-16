@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name PlayerController
 
-var spineScene = preload("res://spine_projectile.tscn");
+var spineScene = preload("./spine_projectile.tscn");
 
 @onready var projectiles: Node3D = get_node('../PlayerProjectiles');
 @onready var cam = $Camera3D;
@@ -15,21 +15,26 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var lastMouse: Vector2;
 
+var platform = OS.get_name();
+var activeMouseMode = Input.MOUSE_MODE_CAPTURED;
+
 func _init():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
+	Input.mouse_mode = activeMouseMode;
 	
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Input.mouse_mode == activeMouseMode:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
 		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
+			Input.mouse_mode = activeMouseMode;
 			
-	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion && (Input.mouse_mode == activeMouseMode || platform == "Web"):
 		self.rotation.y -= event.relative.x * CAM_SENSITIVITY;
 		cam.rotation.x -= event.relative.y * CAM_SENSITIVITY;
 
 func _physics_process(delta):
+	get_tree().call_group("enemies", "updateTarget", global_transform.origin);
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -55,8 +60,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("game_shoot"):
 		var mouse = get_viewport().get_mouse_position();
 		var newSpine = spineScene.instantiate() as RigidBody3D;
-		newSpine.global_position = cam.project_ray_origin(mouse);
-		newSpine.set_axis_velocity(cam.project_ray_normal(mouse) * 10);
+		newSpine.global_transform = cam.get_camera_transform();
+		newSpine.rotate_y(PI/2);
+		newSpine.apply_impulse(cam.project_ray_normal(mouse) * 10);
 		projectiles.add_child(newSpine);
 		
 		#var origin = cam.project_ray_origin(mouse);

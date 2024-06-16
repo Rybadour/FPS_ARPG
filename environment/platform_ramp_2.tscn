@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cphtamj75txwp"]
+
+[ext_resource type="PackedScene" uid="uid://c2xf5fs3mtkhu" path="res://assets/kenney_platformer-kit/Models/GLB format/platform-ramp.glb" id="1_lvxd4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ap0t"]
+size = Vector3(1, 0.193466, 1.13428)
+
+[node name="platform-ramp2" instance=ExtResource("1_lvxd4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.936672, -0.350207, 0, 0.350207, 0.936672, 0, 0.27933, 0.0275374)
+shape = SubResource("BoxShape3D_3ap0t")
