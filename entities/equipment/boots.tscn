@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cgc80klmasae4"]
+
+[node name="Boots" type="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="."]
+billboard = 1
+text = "Boots"

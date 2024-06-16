@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi1fvsf7b2kad"]
+
+[ext_resource type="PackedScene" uid="uid://bvejf5bebhf3g" path="res://assets/FBX Isolated/Armour/Helmet_1.fbx" id="1_7vnhx"]
+
+[node name="Helmet" type="Node3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_7vnhx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.73806, 0)

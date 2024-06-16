@@ -3,13 +3,13 @@ class_name PlayerController
 
 var spineScene = preload("./spine_projectile.tscn");
 
+@onready var inventory: InventoryPanel = get_node('../PlayerUI/InventoryPanel');
 @onready var projectiles: Node3D = get_node('../PlayerProjectiles');
 @onready var cam = $Camera3D;
 
 const SPEED = 4.0;
 const JUMP_VELOCITY = 5
 const CAM_SENSITIVITY = 0.005;
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -25,8 +25,10 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode == activeMouseMode:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+			inventory.visible = true;
 		else:
 			Input.mouse_mode = activeMouseMode;
+			inventory.visible = false;
 			
 	if event is InputEventMouseMotion && (Input.mouse_mode == activeMouseMode || platform == "Web"):
 		self.rotation.y -= event.relative.x * CAM_SENSITIVITY;

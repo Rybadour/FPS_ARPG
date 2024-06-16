@@ -15,6 +15,13 @@ run/main_scene="res://levels/test_level_2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://data/GLOBALS.gd"
+ItemConfig="*res://data/ItemConfig.gd"
+UiUtils="*res://data/UIUtils.gd"
+GlobalSignals="*res://utils/GlobalSignals.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/aabb-static-box-collider-from-mesh/plugin.cfg")

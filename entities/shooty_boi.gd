@@ -22,10 +22,12 @@ func _physics_process(delta):
 	velocity = newVelocity;
 	move_and_slide();
 
+
 func onHit(damage: int):
 	health -= damage;
 	effects.onHit(damage);
 	if health <= 0:
+		GlobalSignals.emit_signal("EnemyDies", transform.origin, 1);
 		var corpse = RigidBody3D.new();
 		corpseShape.reparent(corpse);
 		body.reparent(corpse);
