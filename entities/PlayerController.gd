@@ -59,18 +59,9 @@ func _physics_process(delta):
 	# Shooting
 	if Input.is_action_just_pressed("game_shoot"):
 		var mouse = get_viewport().get_mouse_position();
-		var newSpine = spineScene.instantiate() as RigidBody3D;
-		newSpine.global_transform = cam.get_camera_transform();
-		newSpine.rotate_y(PI/2);
-		newSpine.apply_impulse(cam.project_ray_normal(mouse) * 10);
-		projectiles.add_child(newSpine);
+		var spineDirection = cam.project_ray_normal(mouse);
 		
-		#var origin = cam.project_ray_origin(mouse);
-		#var query = PhysicsRayQueryParameters3D.create(origin, origin + cam.project_ray_normal(mouse) * 1000);
-		#query.collision_mask = 0b00000000_00000000_00000000_0000100;
-		#query.collide_with_bodies = true;
-		#var enemy = get_world_3d().direct_space_state.intersect_ray(query);
-		#if !enemy.is_empty():
-			#var obj = enemy.get('collider');
-			#if obj is Enemy:
-				#obj.onHit(1);
+		var newSpine = spineScene.instantiate() as SpineProjectile;
+		projectiles.add_child(newSpine);
+		newSpine.global_transform = cam.global_transform;
+		newSpine.initWithDirection(spineDirection);
