@@ -5,6 +5,7 @@ var spineScene = preload("./spine_projectile.tscn");
 
 @onready var inventory: InventoryPanel = get_node('../PlayerUI/InventoryPanel');
 @onready var projectiles: Node3D = get_node('../PlayerProjectiles');
+@onready var pickupTip: PickupTip = get_node('../PlayerUI/PickupTip');
 @onready var cam = $Camera3D;
 
 const SPEED = 4.0;
@@ -67,3 +68,10 @@ func _physics_process(delta):
 		projectiles.add_child(newSpine);
 		newSpine.global_transform = cam.global_transform;
 		newSpine.initWithDirection(spineDirection);
+
+func onNearItem(droppedItem: DroppedItem):
+	pickupTip.setItem(droppedItem);
+
+
+func onLeaveItem(droppedItem: DroppedItem):
+	pickupTip.unselectItem();

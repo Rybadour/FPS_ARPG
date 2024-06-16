@@ -48,3 +48,13 @@ func setItem(newItem: RealItem):
 	elif item.item.slotType == Globals.SlotType.Boots:
 		itemModel = boots.instantiate();
 	itemContainer.add_child(itemModel);
+
+
+func onBodyShapeEntered(body_rid, body: PhysicsBody3D, body_shape_index, local_shape_index):
+	if body is PlayerController:
+		(body as PlayerController).onNearItem(self);
+
+
+func onBodyShapeExited(body: PhysicsBody3D):
+	if body is PlayerController:
+		(body as PlayerController).onLeaveItem(self);
