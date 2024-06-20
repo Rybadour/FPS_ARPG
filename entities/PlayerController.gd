@@ -16,22 +16,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var lastMouse: Vector2;
 
-var platform = OS.get_name();
-var activeMouseMode = Input.MOUSE_MODE_CAPTURED;
-
-func _init():
-	Input.mouse_mode = activeMouseMode;
 	
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == activeMouseMode:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
-			inventory.visible = true;
-		else:
-			Input.mouse_mode = activeMouseMode;
-			inventory.visible = false;
-			
-	if event is InputEventMouseMotion && (Input.mouse_mode == activeMouseMode || platform == "Web"):
+	if event is InputEventMouseMotion:
 		self.rotation.y -= event.relative.x * CAM_SENSITIVITY;
 		cam.rotation.x -= event.relative.y * CAM_SENSITIVITY;
 	

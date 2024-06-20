@@ -13,15 +13,26 @@ var items: Array[Item];
 
 var itemTileMap: Dictionary; #Item objectid -> ItemTile;
 
-# Called when the node enters the scene tree for the first time.
+const activeMouseMode = Input.MOUSE_MODE_CAPTURED;
+
+func _init():
+	Input.mouse_mode = activeMouseMode;
+
+# Called when the node enters the scene tree for the fiwrst time.
 func _ready():
 	custom_minimum_size.x = COLLAPSED_SIZE;
-	gearSlots.connect("transfer_request", addItemToList);
+	gearSlots.connect("transferRequest", addItemToList);
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if Input.mouse_mode == activeMouseMode:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+			self.visible = true;
+			get_tree().paused = true;
+		else:
+			Input.mouse_mode = activeMouseMode;
+			self.visible = false;
+			get_tree().paused = false;
 
 
 func expandToggle():
@@ -52,7 +63,7 @@ func addItemToList(item: RealItem):
 	items.append(item);
 	var tile: ItemTile = itemTile.instantiate();
 	tile.item = item;
-	tile.connect("transfer_request", Callable(self, "transferGearToSlot").bind(item));
+	tile.connect("transferRequest", Callable(self, "transferGearToSlot").bind(item));
 	grid.add_child(tile);
 	itemTileMap[item.get_instance_id()] = tile;
 

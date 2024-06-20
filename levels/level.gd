@@ -10,7 +10,6 @@ var droppedItemScene = preload("res://ui/world/dropped_item.tscn");
 func _ready():
 	GlobalSignals.connect("EnemyDies", onEnemyDies);
 
-
 func onEnemyDies(pos: Vector3, level: int):
 	var itemConfig = lootGen.generateItem();
 	if itemConfig == null:
