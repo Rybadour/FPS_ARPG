@@ -154,7 +154,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25992, 0.718379, 21.4681)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6126, 0.718379, 21.4681)
 
 [node name="ShootyBoi7" parent="Enemies" instance=ExtResource("2_gojxb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0948862, 0.718379, 21.4681)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07867, 0.718379, 25.6378)
 
 [node name="ShootyBoi8" parent="Enemies" instance=ExtResource("2_gojxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77084, 0.718379, 21.4681)

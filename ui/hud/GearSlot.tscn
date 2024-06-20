@@ -1,14 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg5e7e1fkiyur"]
+[gd_scene load_steps=2 format=3 uid="uid://bg5e7e1fkiyur"]
 
-[ext_resource type="Script" path="res://Components/GearSlot.gd" id="1_iu141"]
-[ext_resource type="Texture2D" uid="uid://bnfxismu7uyak" path="res://Assets/warlord-helmet.svg" id="1_qruak"]
+[ext_resource type="Script" path="res://ui/hud/GearSlot.gd" id="1_uwxdk"]
 
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(124, 188)
 offset_right = 124.0
 offset_bottom = 188.0
 color = Color(0.501961, 0.501961, 0.501961, 1)
-script = ExtResource("1_iu141")
+script = ExtResource("1_uwxdk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -30,6 +29,5 @@ color = Color(0, 0, 0, 1)
 modulate = Color(0.392157, 0.392157, 0.392157, 1)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("1_qruak")
 expand_mode = 5
 stretch_mode = 4

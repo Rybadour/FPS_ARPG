@@ -23,5 +23,5 @@ func _ready():
 
 
 func _gui_input(event):
-	if event.is_action_released("transfer_item", true):
+	if event.is_action_released("transfer_request", true):
 		transferRequest.emit();

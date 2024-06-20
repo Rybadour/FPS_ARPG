@@ -34,6 +34,12 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion && (Input.mouse_mode == activeMouseMode || platform == "Web"):
 		self.rotation.y -= event.relative.x * CAM_SENSITIVITY;
 		cam.rotation.x -= event.relative.y * CAM_SENSITIVITY;
+	
+	if Input.is_action_just_pressed("interact_world"):
+		if pickupTip.droppedItem != null:
+			inventory.addItemToList(pickupTip.droppedItem.item);
+			pickupTip.unselectItem();
+			pickupTip.droppedItem.queue_free();
 
 func _physics_process(delta):
 	get_tree().call_group("enemies", "updateTarget", global_transform.origin);
@@ -68,6 +74,7 @@ func _physics_process(delta):
 		projectiles.add_child(newSpine);
 		newSpine.global_transform = cam.global_transform;
 		newSpine.initWithDirection(spineDirection);
+
 
 func onNearItem(droppedItem: DroppedItem):
 	pickupTip.setItem(droppedItem);

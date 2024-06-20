@@ -16,7 +16,7 @@ var itemTileMap: Dictionary; #Item objectid -> ItemTile;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	custom_minimum_size.x = COLLAPSED_SIZE;
-	gearSlots.connect("returnItem", addItemToList);
+	gearSlots.connect("transfer_request", addItemToList);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,7 +52,7 @@ func addItemToList(item: RealItem):
 	items.append(item);
 	var tile: ItemTile = itemTile.instantiate();
 	tile.item = item;
-	tile.connect("transferRequest", Callable(self, "transferGearToSlot").bind(item));
+	tile.connect("transfer_request", Callable(self, "transferGearToSlot").bind(item));
 	grid.add_child(tile);
 	itemTileMap[item.get_instance_id()] = tile;
 
