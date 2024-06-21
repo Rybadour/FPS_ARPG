@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://du3dwecjmhttp"]
+[gd_scene load_steps=15 format=3 uid="uid://du3dwecjmhttp"]
 
 [ext_resource type="Script" path="res://entities/PlayerController.gd" id="1_8otq7"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_81bx2"]
 [ext_resource type="PackedScene" uid="uid://bakr3gertjlwr" path="res://entities/shooty_boi.tscn" id="2_gojxb"]
 [ext_resource type="Script" path="res://ui/hud/InventoryPanel.gd" id="4_6urlr"]
+[ext_resource type="PackedScene" uid="uid://bbm3xxne0i1n2" path="res://entities/hopper_enemy.tscn" id="4_bpomw"]
 [ext_resource type="Script" path="res://ui/hud/GearSlots.gd" id="5_tdxf0"]
 [ext_resource type="PackedScene" uid="uid://bg5e7e1fkiyur" path="res://ui/hud/GearSlot.tscn" id="6_aot65"]
 [ext_resource type="Script" path="res://ui/hud/PickupTip.gd" id="7_u3ki1"]
@@ -158,6 +159,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07867, 0.718379, 25.6378)
 
 [node name="ShootyBoi8" parent="Enemies" instance=ExtResource("2_gojxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77084, 0.718379, 21.4681)
+
+[node name="Hopper" parent="Enemies" instance=ExtResource("4_bpomw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716199, 22.7782)
+
+[node name="Hopper2" parent="Enemies" instance=ExtResource("4_bpomw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51931, 1.18525, 23.7752)
+
+[node name="Hopper3" parent="Enemies" instance=ExtResource("4_bpomw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2918, 0.948242, 23.1394)
+
+[node name="Hopper4" parent="Enemies" instance=ExtResource("4_bpomw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66931, 0.716199, 22.7782)
+
+[node name="Hopper5" parent="Enemies" instance=ExtResource("4_bpomw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15, 1.18525, 23.7752)
+
+[node name="Hopper6" parent="Enemies" instance=ExtResource("4_bpomw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96111, 0.948242, 23.1394)
 
 [node name="DroppedLoot" type="Node3D" parent="."]
 

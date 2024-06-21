@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bakr3gertjlwr"]
 
-[ext_resource type="Script" path="res://entities/shooty_boi.gd" id="1_kdgu3"]
+[ext_resource type="Script" path="res://entities/enemy_base.gd" id="1_kdgu3"]
 [ext_resource type="Texture2D" uid="uid://dvxscx5vqv6p0" path="res://assets/kenney_blocky-characters/Faces/face_robot.png" id="2_12fbo"]
 [ext_resource type="PackedScene" uid="uid://di4l55guqiy8p" path="res://assets/kenney_blaster-kit/Models/GLTF format/blasterB.glb" id="3_b17kj"]
 [ext_resource type="PackedScene" uid="uid://7qbr6j7h3fpk" path="res://entities/enemy_on_hit_effects.tscn" id="4_86c03"]
