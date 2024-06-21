@@ -8,7 +8,7 @@ class_name Enemy
 
 const SPEED = 3;
 
-var health: int = 10;
+var health: float = 10;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -23,7 +23,7 @@ func _physics_process(delta):
 	move_and_slide();
 
 
-func onHit(damage: int):
+func onHit(damage: float):
 	health -= damage;
 	effects.onHit(damage);
 	if health <= 0:

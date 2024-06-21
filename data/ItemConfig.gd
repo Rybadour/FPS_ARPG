@@ -89,7 +89,7 @@ var bootsItems: Array[Item] = [
 		"Sneakers",
 		Globals.SlotType.Boots, [
 			Modifier.new(Globals.StatType.MovementSpeed, [
-				ModifierTier.new(1, 10, 20),
+				ModifierTier.new(1, 10, 50),
 			])
 		],
 		commonAffixes

@@ -19,8 +19,12 @@ var statLabelScene = preload("res://ui/hud/StatLabel.tscn");
 var totalStats: Dictionary; #StatType -> float
 var statLabels: Dictionary; #StatType -> Label
 
-func getStat(stat: Globals.StatType):
+func getStat(stat: Globals.StatType) -> float:
 	return totalStats[stat] if totalStats.has(stat) else 0;
+
+
+func getStatAsIncrease(stat: Globals.StatType) -> float:
+	return 1 + (getStat(stat) / 100);
 
 
 func assignGear(item: RealItem):

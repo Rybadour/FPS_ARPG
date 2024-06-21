@@ -7,16 +7,16 @@ const DAMAGE_FADE_SPEED = 0.4;
 @onready var damageNum: Label3D = $Damage;
 
 var damageTween: Tween;
-var accumDamage: int = 0;
+var accumDamage: float = 0;
 		
 func onTweenComplete():
 	accumDamage = 0;
 
-func onHit(damage: int):
+func onHit(damage: float):
 	audio.play();
 	
 	accumDamage += damage;
-	damageNum.text = str(accumDamage);
+	damageNum.text = str(floor(accumDamage));
 	damageNum.modulate = Color.RED;
 	damageNum.outline_modulate = Color.BLACK;
 	damageNum.scale = Vector3(1, 1, 1);

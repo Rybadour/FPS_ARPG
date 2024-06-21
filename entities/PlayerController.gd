@@ -4,6 +4,7 @@ class_name PlayerController
 var spineScene = preload("./spine_projectile.tscn");
 
 @onready var inventory: InventoryPanel = get_node('../PlayerUI/InventoryPanel');
+@onready var gearSlots: GearSlots = %GearSlots;
 @onready var projectiles: Node3D = get_node('../PlayerProjectiles');
 @onready var pickupTip: PickupTip = get_node('../PlayerUI/PickupTip');
 @onready var cam = $Camera3D;
@@ -43,15 +44,16 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var modifiedSpeed = SPEED * gearSlots.getStatAsIncrease(Globals.StatType.MovementSpeed);
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * modifiedSpeed;
+		velocity.z = direction.z * modifiedSpeed;
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, modifiedSpeed);
+		velocity.z = move_toward(velocity.z, 0, modifiedSpeed);
 
 	move_and_slide()
-	
+
 	# Shooting
 	if Input.is_action_just_pressed("game_shoot"):
 		var mouse = get_viewport().get_mouse_position();
@@ -60,7 +62,9 @@ func _physics_process(delta):
 		var newSpine = spineScene.instantiate() as SpineProjectile;
 		projectiles.add_child(newSpine);
 		newSpine.global_transform = cam.global_transform;
-		newSpine.initWithDirection(spineDirection);
+		var modifiedDamage = 2 + gearSlots.getStat(Globals.StatType.PhysicalPower);
+		modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
+		newSpine.init(spineDirection, modifiedDamage);
 
 
 func onNearItem(droppedItem: DroppedItem):

@@ -2,11 +2,14 @@ extends RayCast3D
 class_name SpineProjectile
 
 const SPEED = 20;
-var velocity: Vector3;
 
-func initWithDirection(direction: Vector3):
+var velocity: Vector3;
+var damage: float;
+
+func init(direction: Vector3, damage: float):
 	global_transform.origin += direction * 0.1;
 	velocity = direction * SPEED;
+	self.damage = damage;
 
 func _process(delta):
 	global_transform.origin += velocity * delta;
@@ -15,6 +18,6 @@ func _process(delta):
 		return;
 		
 	if collider is Enemy:
-		(collider as Enemy).onHit(5);
+		(collider as Enemy).onHit(damage);
 	
 	queue_free();
