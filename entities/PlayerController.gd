@@ -16,7 +16,6 @@ const CAM_SENSITIVITY = 0.005;
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var lastMouse: Vector2;
-
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -24,10 +23,10 @@ func _unhandled_input(event):
 		cam.rotation.x -= event.relative.y * CAM_SENSITIVITY;
 	
 	if Input.is_action_just_pressed("interact_world"):
-		if pickupTip.droppedItem != null:
-			inventory.addItemToList(pickupTip.droppedItem.item);
-			pickupTip.unselectItem();
-			pickupTip.droppedItem.queue_free();
+		if !pickupTip.droppedItems.is_empty():
+			for di in pickupTip.droppedItems:
+				inventory.addItemToList(di.item);
+			pickupTip.removeItems();
 
 func _physics_process(delta):
 	get_tree().call_group("enemies", "updateTarget", global_transform.origin);
@@ -62,7 +61,7 @@ func _physics_process(delta):
 		var newSpine = spineScene.instantiate() as SpineProjectile;
 		projectiles.add_child(newSpine);
 		newSpine.global_transform = cam.global_transform;
-		var modifiedDamage = 2 + gearSlots.getStat(Globals.StatType.PhysicalPower);
+		var modifiedDamage = 4 + gearSlots.getStat(Globals.StatType.PhysicalPower);
 		modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
 		newSpine.init(spineDirection, modifiedDamage);
 
@@ -72,4 +71,4 @@ func onNearItem(droppedItem: DroppedItem):
 
 
 func onLeaveItem(droppedItem: DroppedItem):
-	pickupTip.unselectItem();
+	pickupTip.unselectItem(droppedItem);
