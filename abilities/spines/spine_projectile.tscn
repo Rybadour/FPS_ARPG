@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://8rlegwo06x23"]
 
-[ext_resource type="Script" path="res://entities/spine_projectile.gd" id="1_13u11"]
+[ext_resource type="Script" path="res://abilities/spines/spine_projectile.gd" id="1_13u11"]
 [ext_resource type="PackedScene" uid="uid://btahkv08m8qny" path="res://assets/kenny_foodkit/carrot.glb" id="1_44aj8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ep35j"]

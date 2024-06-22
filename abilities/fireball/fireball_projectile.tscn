@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccplbtfxltxlo"]
+
+[ext_resource type="Script" path="res://abilities/fireball/fireball_projectile.gd" id="1_8qr0c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3rvg2"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5smw7"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.486275)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3db6o"]
+radius = 3.0
+
+[node name="FireballProjectile" type="Node3D"]
+script = ExtResource("1_8qr0c")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 5
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_3rvg2")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D"]
+radius = 0.2
+material = SubResource("StandardMaterial3D_5smw7")
+
+[node name="Explosion" type="Area3D" parent="RigidBody3D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Explosion"]
+shape = SubResource("SphereShape3D_3db6o")

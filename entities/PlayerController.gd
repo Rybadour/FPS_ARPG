@@ -1,7 +1,8 @@
 extends CharacterBody3D
 class_name PlayerController
 
-var spineScene = preload("./spine_projectile.tscn");
+var spineScene = preload("../abilities/spines/spine_projectile.tscn");
+var fireballScene = preload("../abilities/fireball/fireball_projectile.tscn");
 
 @onready var inventory: InventoryPanel = get_node('../PlayerUI/InventoryPanel');
 @onready var gearSlots: GearSlots = %GearSlots;
@@ -56,14 +57,21 @@ func _physics_process(delta):
 	# Shooting
 	if Input.is_action_just_pressed("game_shoot"):
 		var mouse = get_viewport().get_mouse_position();
-		var spineDirection = cam.project_ray_normal(mouse);
+		var shootDirection = cam.project_ray_normal(mouse);
 		
-		var newSpine = spineScene.instantiate() as SpineProjectile;
-		projectiles.add_child(newSpine);
-		newSpine.global_transform = cam.global_transform;
+		#var newSpine = spineScene.instantiate() as SpineProjectile;
+		#projectiles.add_child(newSpine);
+		#newSpine.global_transform = cam.global_transform;
+		#var modifiedDamage = 4 + gearSlots.getStat(Globals.StatType.PhysicalPower);
+		#modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
+		#newSpine.init(shootDirection, modifiedDamage);
+		
+		var newFireball = fireballScene.instantiate() as FireballProjectile;
+		projectiles.add_child(newFireball);
+		newFireball.global_transform = cam.global_transform;
 		var modifiedDamage = 4 + gearSlots.getStat(Globals.StatType.PhysicalPower);
 		modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
-		newSpine.init(spineDirection, modifiedDamage);
+		newFireball.init(shootDirection, modifiedDamage); 
 
 
 func onNearItem(droppedItem: DroppedItem):

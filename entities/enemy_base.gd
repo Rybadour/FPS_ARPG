@@ -36,5 +36,6 @@ func onHit(damage: float):
 		corpse.apply_impulse(Vector3(0, 1, -0.3));
 		queue_free();
 
+
 func updateTarget(target: Vector3):
 	navAgent.target_position = target;
