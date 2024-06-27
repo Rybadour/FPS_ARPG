@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://e22hk3r50clu"]
+
+[ext_resource type="Texture2D" uid="uid://d3l6qajtvvip3" path="res://assets/kenney_googly-eyes/PNG/googly-a.png" id="1_c1lor"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_c1lor")

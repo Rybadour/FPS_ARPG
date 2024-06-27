@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bykhxg1xtjhlg"]
+
+[ext_resource type="PackedScene" uid="uid://chhilai3sib32" path="res://assets/kenny_foodkit/pizza.glb" id="1_hpfse"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ifn4j"]
+height = 0.238582
+radius = 0.441632
+
+[node name="OuterLayer" type="Node3D"]
+
+[node name="pizza2" parent="." instance=ExtResource("1_hpfse")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ifn4j")
