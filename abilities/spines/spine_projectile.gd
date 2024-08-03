@@ -18,6 +18,6 @@ func _process(delta):
 		return;
 		
 	if collider is Enemy:
-		(collider as Enemy).onHit(damage);
+		(collider as Enemy).onHit(damage, get_collision_point());
 	
 	queue_free();

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c75skhb7m8s3e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfyf1"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ny5xy"]
+material = SubResource("StandardMaterial3D_gfyf1")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_i7lnk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.648649, 1), 0.0, 0.0, 0, 0, Vector2(0.986486, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_drvh2"]
+offsets = PackedFloat32Array(0, 0.649485, 0.994845)
+colors = PackedColorArray(0.891291, 4.18738e-06, 8.66354e-07, 1, 0.972549, 0.956863, 0.219608, 1, 0.988235, 1, 0.607843, 1)
+
+[node name="FireBallParticles" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 60
+lifetime = 0.5
+mesh = SubResource("BoxMesh_ny5xy")
+emission_shape = 2
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 20, 0)
+radial_accel_min = -5.0
+scale_amount_curve = SubResource("Curve_i7lnk")
+color_ramp = SubResource("Gradient_drvh2")

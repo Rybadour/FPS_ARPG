@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://7qbr6j7h3fpk"]
+[gd_scene load_steps=4 format=3 uid="uid://7qbr6j7h3fpk"]
 
 [ext_resource type="Script" path="res://entities/EnemyOnHitEffects.gd" id="1_whwpx"]
 [ext_resource type="AudioStream" uid="uid://glf0rtnys34" path="res://assets/impactPlank_medium_000.ogg" id="2_aqagp"]
+[ext_resource type="PackedScene" uid="uid://dyuknja83t3lb" path="res://abilities/on_hit_particles.tscn" id="3_fdtlt"]
 
 [node name="EnemyOnHitEffects" type="Node3D"]
 script = ExtResource("1_whwpx")
@@ -18,3 +19,5 @@ outline_size = 10
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_aqagp")
 volume_db = -5.622
+
+[node name="OnHitParticles" parent="." instance=ExtResource("3_fdtlt")]

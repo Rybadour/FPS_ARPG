@@ -5,6 +5,7 @@ const DAMAGE_FADE_SPEED = 0.4;
 
 @onready var audio: AudioStreamPlayer = $Audio;
 @onready var damageNum: Label3D = $Damage;
+@onready var onHitParticles: CPUParticles3D = $OnHitParticles;
 
 var damageTween: Tween;
 var accumDamage: float = 0;
@@ -12,7 +13,7 @@ var accumDamage: float = 0;
 func onTweenComplete():
 	accumDamage = 0;
 
-func onHit(damage: float):
+func onHit(damage: float, globalHitSpot: Vector3):
 	audio.play();
 	
 	accumDamage += damage;
@@ -23,6 +24,9 @@ func onHit(damage: float):
 	
 	if damageTween != null && damageTween.is_running():
 		damageTween.kill();
+	
+	onHitParticles.global_position = globalHitSpot;
+	onHitParticles.restart();
 	
 	damageTween = get_tree().create_tween();
 	damageTween.set_parallel(true);

@@ -59,19 +59,19 @@ func _physics_process(delta):
 		var mouse = get_viewport().get_mouse_position();
 		var shootDirection = cam.project_ray_normal(mouse);
 		
-		#var newSpine = spineScene.instantiate() as SpineProjectile;
-		#projectiles.add_child(newSpine);
-		#newSpine.global_transform = cam.global_transform;
-		#var modifiedDamage = 4 + gearSlots.getStat(Globals.StatType.PhysicalPower);
-		#modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
-		#newSpine.init(shootDirection, modifiedDamage);
-		
-		var newFireball = fireballScene.instantiate() as FireballProjectile;
-		projectiles.add_child(newFireball);
-		newFireball.global_transform = cam.global_transform;
+		var newSpine = spineScene.instantiate() as SpineProjectile;
+		projectiles.add_child(newSpine);
+		newSpine.global_transform = cam.global_transform;
 		var modifiedDamage = 4 + gearSlots.getStat(Globals.StatType.PhysicalPower);
 		modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
-		newFireball.init(shootDirection, modifiedDamage); 
+		newSpine.init(shootDirection, modifiedDamage);
+		
+		#var newFireball = fireballScene.instantiate() as FireballProjectile;
+		#projectiles.add_child(newFireball);
+		#newFireball.global_transform = cam.global_transform;
+		#var modifiedDamage = 4 + gearSlots.getStat(Globals.StatType.PhysicalPower);
+		#modifiedDamage *= gearSlots.getStatAsIncrease(Globals.StatType.IncreasedPhysicalPower);
+		#newFireball.init(shootDirection, modifiedDamage); 
 
 
 func onNearItem(droppedItem: DroppedItem):

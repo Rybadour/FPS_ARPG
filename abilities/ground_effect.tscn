@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bticfrldtkv44"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr4tm"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jggfs"]
+material = SubResource("StandardMaterial3D_jr4tm")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_bm7wv"]
+colors = PackedColorArray(0.0778757, 0.512879, 0.529543, 1, 0.113725, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_765jv"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.317647)
+emission_enabled = true
+emission = Color(0.67069, 0.67069, 0.67069, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_siyaa"]
+material = SubResource("StandardMaterial3D_765jv")
+top_radius = 3.0
+bottom_radius = 3.0
+height = 0.1
+
+[node name="GroundEffect" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 20
+mesh = SubResource("BoxMesh_jggfs")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 2.75
+emission_ring_inner_radius = 0.0
+gravity = Vector3(0, 10, 0)
+color_ramp = SubResource("Gradient_bm7wv")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("CylinderMesh_siyaa")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.698039, 1, 1, 1)

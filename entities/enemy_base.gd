@@ -20,12 +20,15 @@ func _physics_process(delta):
 	var newVelocity = (next - current).normalized() * SPEED;
 	
 	velocity = newVelocity;
+	look_at(next);
 	move_and_slide();
 
 
-func onHit(damage: float):
+func onHit(damage: float, globalHitSpot: Vector3 = effects.global_position):
 	health -= damage;
-	effects.onHit(damage);
+	
+	effects.onHit(damage, globalHitSpot);
+	
 	if health <= 0:
 		GlobalSignals.emit_signal("EnemyDies", transform.origin, 1);
 		var corpse = RigidBody3D.new();
@@ -39,3 +42,7 @@ func onHit(damage: float):
 
 func updateTarget(target: Vector3):
 	navAgent.target_position = target;
+
+
+func getIsPassive():
+	return true;
