@@ -24,6 +24,10 @@ GlobalSignals="*res://utils/GlobalSignals.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
+[debug]
+
+gdscript/warnings/exclude_addons=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/aabb-static-box-collider-from-mesh/plugin.cfg", "res://addons/beehave/plugin.cfg")

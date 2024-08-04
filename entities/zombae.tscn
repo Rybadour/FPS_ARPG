@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://dn3paunfr74oq"]
+
+[ext_resource type="Script" path="res://entities/enemy_base.gd" id="1_dmob0"]
+[ext_resource type="PackedScene" uid="uid://7qbr6j7h3fpk" path="res://entities/enemy_on_hit_effects.tscn" id="2_qmcbs"]
+[ext_resource type="Texture2D" uid="uid://4xf6bbph480v" path="res://assets/kenney_blocky-characters/Faces/face_orc.png" id="3_pshul"]
+[ext_resource type="PackedScene" uid="uid://bw5xo5vr4b3ga" path="res://assets/kenney_blocky-characters/Models/basicCharacter.fbx" id="4_otl44"]
+[ext_resource type="Material" uid="uid://bub3wapk3pcs6" path="res://entities/zombae_mat.tres" id="5_7ja1s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5x0n"]
+albedo_texture = ExtResource("3_pshul")
+
+[sub_resource type="QuadMesh" id="QuadMesh_72ff4"]
+material = SubResource("StandardMaterial3D_m5x0n")
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3h7y"]
+height = 0.771476
+radius = 0.235225
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ge0bd"]
+radius = 0.2
+height = 0.75
+
+[node name="Zombae" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_dmob0")
+
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="EnemyOnHitEffects" parent="Body" instance=ExtResource("2_qmcbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754206, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.491286, 0, 0, 0, 0.491286, 0, 0, 0, 0.491286, 8.4754e-09, 0.685076, 0.115516)
+mesh = SubResource("QuadMesh_72ff4")
+skeleton = NodePath("../../..")
+
+[node name="Root Scene" parent="Body" instance=ExtResource("4_otl44")]
+transform = Transform3D(4.94211, 0, 0, 0, 4.94211, 0, 0, 0, 4.94211, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Body/Root Scene/RootNode" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bones/4/position = Vector3(-0.02, -1.49012e-08, 4.32088e-05)
+bones/4/rotation = Quaternion(-0.554706, 0.567292, -0.43495, -0.425793)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(0.0202351, 0.00951531, -5.03814e-16)
+bones/5/rotation = Quaternion(0.00163131, 0.13542, -0.0119346, 0.990715)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.02, -7.45058e-09, -4.32088e-05)
+bones/7/rotation = Quaternion(-0.579017, 0.585337, -0.403167, -0.399471)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(0.019875, -0.0102461, 8.28845e-09)
+bones/8/rotation = Quaternion(0.00155052, 0.147905, -0.0018418, 0.988999)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(0.0299989, -0.000258611, 1.45409e-17)
+bones/9/rotation = Quaternion(-0.704052, 0.710148, 2.34292e-15, 2.26958e-15)
+bones/9/scale = Vector3(1, 1, 1)
+
+[node name="Body1" parent="Body/Root Scene/RootNode/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("5_7ja1s")
+
+[node name="Head1" parent="Body/Root Scene/RootNode/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("5_7ja1s")
+
+[node name="ArmLeft1" parent="Body/Root Scene/RootNode/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("5_7ja1s")
+
+[node name="ArmRight1" parent="Body/Root Scene/RootNode/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("5_7ja1s")
+
+[node name="LegLeft1" parent="Body/Root Scene/RootNode/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("5_7ja1s")
+
+[node name="LegRight1" parent="Body/Root Scene/RootNode/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("5_7ja1s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374224, 0)
+shape = SubResource("CylinderShape3D_b3h7y")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 3.0
+path_height_offset = 0.5
+
+[node name="CorpseShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374224, 0)
+shape = SubResource("CapsuleShape3D_ge0bd")
+disabled = true
+
+[editable path="Body/Root Scene"]
