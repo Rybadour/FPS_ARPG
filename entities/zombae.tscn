@@ -39,22 +39,16 @@ skeleton = NodePath("../../..")
 transform = Transform3D(4.94211, 0, 0, 0, 4.94211, 0, 0, 0, 4.94211, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Body/Root Scene/RootNode" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/4/position = Vector3(-0.02, -1.49012e-08, 4.32088e-05)
 bones/4/rotation = Quaternion(-0.554706, 0.567292, -0.43495, -0.425793)
-bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(0.0202351, 0.00951531, -5.03814e-16)
 bones/5/rotation = Quaternion(0.00163131, 0.13542, -0.0119346, 0.990715)
-bones/5/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.02, -7.45058e-09, -4.32088e-05)
 bones/7/rotation = Quaternion(-0.579017, 0.585337, -0.403167, -0.399471)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0.019875, -0.0102461, 8.28845e-09)
 bones/8/rotation = Quaternion(0.00155052, 0.147905, -0.0018418, 0.988999)
-bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(0.0299989, -0.000258611, 1.45409e-17)
 bones/9/rotation = Quaternion(-0.704052, 0.710148, 2.34292e-15, 2.26958e-15)
-bones/9/scale = Vector3(1, 1, 1)
 
 [node name="Body1" parent="Body/Root Scene/RootNode/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("5_7ja1s")
@@ -63,7 +57,6 @@ surface_material_override/0 = ExtResource("5_7ja1s")
 surface_material_override/0 = ExtResource("5_7ja1s")
 
 [node name="ArmLeft1" parent="Body/Root Scene/RootNode/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/0 = ExtResource("5_7ja1s")
 
 [node name="ArmRight1" parent="Body/Root Scene/RootNode/Skeleton3D" index="3"]
